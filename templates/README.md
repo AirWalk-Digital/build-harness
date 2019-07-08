@@ -10,6 +10,10 @@
 ![{{(ds "config").name}}]({{ (ds "config").logo }})
 {{- end -}}
 
+{{ if has (ds "config") "description" }}
+{{(ds "config").description }}
+{{ end }}
+
 {{ if has (ds "config") "include" }}
 {{ range $file := (datasource "config").include -}}
 {{ (include "includes" $file) }}
