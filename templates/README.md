@@ -2,7 +2,7 @@
 {{- defineDatasource "config" .Env.README_YAML | regexp.Replace ".*" "" -}}
 {{- defineDatasource "includes" .Env.README_INCLUDES | regexp.Replace ".*" "" }}
 
-[![Airwalk Consulting][logo]](https://airwalkconsulting.com) Airwalk Consulting
+## [![Airwalk Consulting][logo]](https://airwalkconsulting.com) __Airwalk Consulting__
 
 # {{(ds "config").name}}{{ if gt (len (ds "config").name) 34 }}{{ print "\n\n" }}{{ end }}{{ if has (ds "config") "badges" }}{{- range $badge := (ds "config").badges -}}{{ printf " [![%s](%s)](%s)" $badge.name $badge.image $badge.url }}{{ end }}{{ end }}
 
@@ -10,8 +10,19 @@
 ![{{(ds "config").name}}]({{ (ds "config").logo }})
 {{- end -}}
 
+## Description
+{{ if has (ds "config") "description" }}
+{{(ds "config").description }}
+{{ end }}
+
+## Requirements
 {{ if has (ds "config") "requirements" }}
 {{(ds "config").requirements }}
+{{ end }}
+
+## Usage
+{{ if has (ds "config") "usage" }}
+{{(ds "config").usage }}
 {{ end }}
 
 {{ if has (ds "config") "include" }}
@@ -46,4 +57,3 @@ See [LICENSE](LICENSE) for full details.
 {{ end }}
 
   [logo]: https://pbs.twimg.com/profile_images/1049700314847293440/yMgqGf3w_bigger.jpg
-
