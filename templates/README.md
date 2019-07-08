@@ -10,10 +10,6 @@
 ![{{(ds "config").name}}]({{ (ds "config").logo }})
 {{- end -}}
 
-{{ if has (ds "config") "description" }}
-{{(ds "config").description }}
-{{ end }}
-
 {{ if has (ds "config") "requirements" }}
 {{(ds "config").requirements }}
 {{ end }}
